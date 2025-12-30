@@ -1,8 +1,8 @@
 {
-"name": "my-first-plugin",
-"description": "A simple greeting plugin to learn the basics",
-"version": "1.0.0",
-"author": {
-"name": "Your Name"
-}
+  "name": "elysia-drizzle-contract",
+  "description": "Elysia Drizzle Contract Plugin",
+  "version": "1.0.0",
+  "author": {
+    "name": "Your Name"
+  }
 }

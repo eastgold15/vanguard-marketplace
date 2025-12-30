@@ -1,0 +1,8 @@
+{
+  "name": "code-generation-skill",
+  "description": "AI驱动的全栈代码生成Skill - 使用ts-morph AST引擎，根据业务需求自动生成Elysia + Drizzle完整后端代码（Contract、Service、Controller）",
+  "version": "1.0.0",
+  "author": {
+    "name": "pori"
+  }
+}
