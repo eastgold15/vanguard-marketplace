@@ -5,9 +5,9 @@
   },
   "plugins": [
     {
-      "name": "elysia-drizzle-contract",
-      "source": "./plugins/elysia-drizzle-contract",
-      "description": "Elysia Drizzle Contract Plugin"
+      "name": "elysia-drizzle-fullstack-Nexus",
+      "source": "./plugins/elysia-drizzle-fullstack-Nexus",
+      "description": "Elysia Drizzle Fullstack Nexus Plugin"
     },
     {
       "name": "code-generation",
