@@ -15,9 +15,14 @@
       "description": "AI驱动的全栈代码生成Skill - 使用ts-morph AST引擎，根据业务需求自动生成Elysia + Drizzle完整后端代码（Contract、Service、Controller）"
     },
     {
-      "name":"react-component",
+      "name": "react-component",
       "source": "./plugins/react-component",
       "description": "AI驱动的React组件代码生成Skill - 根据业务需求自动生成React组件代码,符合一些最佳实践（如使用TypeScript、React Hooks、CSS Modules等）"
+    },
+    {
+      "name": "elysia-plugin",
+      "source": "./plugins/elysia-plugin",
+      "description": "Elysia Plugin - 提供一些常用的Elysia用法"
     }
   ]
 }

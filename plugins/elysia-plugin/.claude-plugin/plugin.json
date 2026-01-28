@@ -1,0 +1,8 @@
+{
+  "name": "elysia-plugin",
+  "description": "Elysia Plugin - 提供一些常用的Elysia用法",
+  "version": "1.0.0",
+  "author": {
+    "name": "pori"
+  }
+}
