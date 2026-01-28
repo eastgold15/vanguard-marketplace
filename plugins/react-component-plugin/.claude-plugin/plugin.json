@@ -1,0 +1,5 @@
+{
+  "name": "react-component-plugin",
+  "description": "react组件按照React Hooks最佳实践生成",
+  "version": "1.0.0"
+}

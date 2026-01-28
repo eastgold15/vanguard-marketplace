@@ -6,17 +6,17 @@
   "plugins": [
     {
       "name": "elysia-drizzle-contract",
-      "source": "./elysia-drizzle-contract",
+      "source": "./plugins/elysia-drizzle-contract",
       "description": "Elysia Drizzle Contract Plugin"
     },
     {
       "name": "code-generation",
-      "source": "./code-generation",
+      "source": "./plugins/code-generation",
       "description": "AI驱动的全栈代码生成Skill - 使用ts-morph AST引擎，根据业务需求自动生成Elysia + Drizzle完整后端代码（Contract、Service、Controller）"
     },
     {
       "name":"react-component",
-      "source": "./react-component",
+      "source": "./plugins/react-component",
       "description": "AI驱动的React组件代码生成Skill - 根据业务需求自动生成React组件代码,符合一些最佳实践（如使用TypeScript、React Hooks、CSS Modules等）"
     }
   ]
