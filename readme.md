@@ -28,6 +28,7 @@
 /plugin install elysia-plugin
 /plugin install code-generation-skill
 /plugin install elysia-drizzle-fullstack-Nexus
+/plugin install claude-marketplace
 
 # 安装后重启 Claude Code 会话使插件生效
 ```
@@ -144,7 +145,59 @@
 
 ---
 
-### 5. **elysia-skills** - ElysiaJS 官方 Skills（子模块）
+### 5. **claude-marketplace** - Claude Code 插件开发指南
+
+> 创建 Claude Code 插件市场和 Skills 的完整指南
+
+**包含 Skills：**
+
+#### create-marketplace
+创建和分发 Claude Code 插件市场（Plugin Marketplace）
+
+**功能特性：**
+- 构建、托管和管理 plugins 的集中式目录
+- 支持团队和社区分发 Claude Code 扩展
+- 集中式发现、版本跟踪、自动更新
+- 支持多种源类型（git 存储库、本地路径、npm 包等）
+
+**适用场景：**
+- 创建团队内部的插件市场
+- 向社区分发你的插件
+- 管理多个插件的版本和更新
+- 配置私有或公开的插件仓库
+
+**核心内容：**
+- Marketplace 文件结构和配置
+- Plugin 源类型（相对路径、GitHub、Git、npm）
+- 托管和分发策略
+- 验证和测试方法
+
+#### create-skill
+创建 Claude Code Skill - 扩展 Claude Code 的功能
+
+**功能特性：**
+- 定义 AI 助手在特定任务中的行为和专业知识
+- 创建领域专家级的一致输出
+- Skill 开发最佳实践
+- 完整的开发、测试和发布流程
+
+**适用场景：**
+- 为特定领域创建专家 Skill
+- 标准化代码审查流程
+- 自动化复杂任务
+- 创建交互式向导
+
+**核心内容：**
+- Skill 文件结构和 Frontmatter 配置
+- 不同类型 Skill 的模式（分析型、生成型、转换型、交互型）
+- 最佳实践和调试技巧
+- 完整的 Elysia 开发 Skill 示例
+
+**版本：** 1.0.0
+
+---
+
+### 6. **elysia-skills** - ElysiaJS 官方 Skills（子模块）
 
 > 来自 elysiajs/skills 仓库的官方 AI 技能集合
 
@@ -200,14 +253,3 @@ git submodule update --remote plugins/elysia-skills
 - [Claude Code 文档](https://github.com/anthropics/claude-code)
 - [Drizzle ORM](https://orm.drizzle.team/)
 
-## 📄 许可证
-
-MIT License
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request！
-
----
-
-**注意：** 安装插件后，通常需要重启 Claude Code 会话，新插件才会生效。

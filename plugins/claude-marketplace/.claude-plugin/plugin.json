@@ -1,0 +1,12 @@
+{
+  "name": "claude-marketplace",
+  "description": "创建 Claude Code 插件市场和 Skills 的指导插件 - 包含创建 marketplace 和创建 skill 的完整指南",
+  "version": "1.0.0",
+  "author": {
+    "name": "boer-power"
+  },
+  "skills": [
+    "./skills/create-marketplace",
+    "./skills/create-skill"
+  ]
+}
