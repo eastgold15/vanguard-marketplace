@@ -1,37 +1,77 @@
 ---
 name: create-skill
-description: 创建 Claude Code Skill - 扩展 Claude Code 的功能。Skill 是包含系统提示的文件，定义了 AI 助手在特定任务中的行为和专业知识。
+description: 创建高质量 Claude Code Skills。从实际专业知识出发，编写精炼、可迭代的技能文件。
 ---
 
 # 创建 Claude Code Skill
 
-> 创建和配置 Claude Code Skills 以扩展 AI 助手的功能。
+编写高质量的 Skills，让 Claude Code 成为特定领域的专家助手。
 
-**Skill** 是包含系统提示的文件，定义了 Claude Code 在特定任务中的行为、专业知识和工作流程。Skills 可以让 Claude Code 成为特定领域的专家，提供一致的专业级输出。
+## 核心原则
 
-## 概述
+### 从真实专业知识出发
 
-创建 Skill 涉及：
+❌ **不要**：仅依赖 LLM 的通用知识创建技能
+✅ **应该**：从实际任务中提取可复用的模式
 
-1. **确定 Skill 范围**：定义 Skill 要解决的具体问题或领域
-2. **创建 SKILL.md**：编写包含 frontmatter 和系统提示的文件
-3. **配置 Plugin**：将 Skill 添加到 plugin 或直接使用
-4. **测试和迭代**：验证 Skill 行为并优化
+**来源渠道：**
+1. **实际任务执行** - 在对话中完成任务，记录成功步骤、修正点、输入输出格式
+2. **项目文档综合** - 从内部文档、API 规范、代码审查评论、版本控制历史中提取
+3. **失败案例分析** - 从真实的失败案例和解决方案中学习
 
-## Skill 文件结构
+### 用真实执行来优化
 
-### 基本结构
+创建 → 执行 → 修订的循环：
+
+```bash
+# 第一次执行真实任务
+/skill-trigger "执行实际任务"
+
+# 分析执行追踪，找出问题
+# - 哪些步骤浪费了时间？
+# - 哪些指令太模糊？
+# - 哪些内容不相关？
+
+# 修订 skill 并再次执行
+```
+
+### 节省上下文
+
+**添加 Agent 缺乏的，省略 Agent 已知的：**
+
+- ✅ 项目特定约定、领域特定流程、非显而易见的边缘情况
+- ❌ 什么是 PDF、HTTP 如何工作、数据库迁移是什么
+
+**设计连贯单元：**
+- 技能范围应封装一个连贯的工作单元
+- 太窄：多个技能加载，开销大且指令冲突
+- 太宽：难以精确触发
+
+**渐进式披露：**
+- `SKILL.md` 保持在 500 行、5000 token 以下
+- 详细参考材料放入 `references/` 目录
+- 告诉 Agent **何时**加载每个文件
+
+````markdown
+<!-- 好：按需加载 -->
+读取 `references/api-errors.md` **当** API 返回非 200 状态码时
+
+<!-- 差：通用指示 -->
+详见 references/ 目录
+````
+
+## 基本结构
 
 ```markdown
 ---
 name: my-skill
-description: 简短描述技能的功能
+description: 具体描述技能功能和使用场景
 disable-model-invocation: false
 ---
 
 # Skill 标题
 
-这里是 skill 的详细说明...
+[核心指令 - Agent 在每次运行时都需要的内容]
 ```
 
 ### Frontmatter 字段
@@ -42,65 +82,196 @@ disable-model-invocation: false
 | `description` | string | 是 | 简短描述，用于 skill 发现和选择 |
 | `disable-model-invocation` | boolean | 否 | 是否禁用模型调用（默认：false）|
 
-## 创建 Skill 的步骤
+## 校准控制
 
-### 步骤 1：确定 Skill 用途
+### 匹配具体性与脆弱性
 
-明确 Skill 要解决的具体问题：
+**给 Agent 自由**（多种方法有效时）：
 
-- ✅ 好的 Skill：代码审查、API 生成、测试编写
-- ❌ 不好的 Skill：通用编程、做所有事情
+````markdown
+## 代码审查流程
 
-### 步骤 2：创建目录结构
+1. 检查所有数据库查询的 SQL 注入（使用参数化查询）
+2. 验证每个端点的认证检查
+3. 查找并发代码路径中的竞态条件
+4. 确认错误消息不泄露内部细节
+````
+
+**精确指令**（操作脆弱、一致性重要时）：
+
+````markdown
+## 数据库迁移
+
+**严格按以下顺序执行：**
+
+```bash
+python scripts/migrate.py --verify --backup
+```
+
+不要修改命令或添加额外标志。
+````
+
+### 提供默认值，而非菜单
+
+````markdown
+<!-- 差：太多选项 -->
+你可以使用 pypdf、pdfplumber、PyMuPDF 或 pdf2image...
+
+<!-- 好：清晰的默认值 + 逃生路径 -->
+使用 pdfplumber 进行文本提取：
+
+```python
+import pdfplumber
+```
+
+**例外**：对于需要 OCR 的扫描 PDF，改用 pdf2image + pytesseract。
+````
+
+### 优先程序而非声明
+
+````markdown
+<!-- 差：特定答案 - 仅适用于此特定任务 -->
+连接 `orders` 表到 `customers`，条件 `customer_id`，
+过滤 `region = 'EMEA'`，求和 `amount` 列。
+
+<!-- 好：可复用方法 - 适用于任何分析查询 -->
+1. 从 `references/schema.yaml` 读取 schema 找到相关表
+2. 使用 `_id` 外键约定连接表
+3. 将用户请求的过滤器应用为 WHERE 子句
+4. 聚合数值列并格式化为 markdown 表格
+````
+
+## 有效指令模式
+
+### 输出格式模板
+
+````markdown
+## 报告结构
+
+使用此模板，根据具体分析调整章节：
+
+```markdown
+# [分析标题]
+
+## 执行摘要
+[关键发现的一段概述]
+
+## 主要发现
+- 支持数据的发现 1
+- 支持数据的发现 2
+
+## 建议
+1. 具体可操作的建议
+2. 具体可操作的建议
+```
+````
+
+### 多步骤工作流检查清单
+
+````markdown
+## 表单处理工作流
+
+进度：
+- [ ] 步骤 1：分析表单（运行 `scripts/analyze_form.py`）
+- [ ] 步骤 2：创建字段映射（编辑 `fields.json`）
+- [ ] 步骤 3：验证映射（运行 `scripts/validate_fields.py`）
+- [ ] 步骤 4：填充表单（运行 `scripts/fill_form.py`）
+- [ ] 步骤 5：验证输出（运行 `scripts/verify_output.py`）
+````
+
+### 验证循环
+
+````markdown
+## 编辑工作流
+
+1. 进行编辑
+2. 运行验证：`python scripts/validate.py output/`
+3. 如果验证失败：
+   - 审查错误消息
+   - 修复问题
+   - 再次运行验证
+4. 仅在验证通过后继续
+````
+
+### 计划-验证-执行
+
+````markdown
+## PDF 表单填充
+
+1. 提取表单字段：`python scripts/analyze_form.py input.pdf` → `form_fields.json`
+   （列出每个字段名称、类型和是否必填）
+
+2. 创建 `field_values.json`，将每个字段名映射到其预期值
+
+3. 验证：`python scripts/validate_fields.py form_fields.json field_values.json`
+   （检查每个字段名存在于表单中、类型兼容、必填字段不缺失）
+
+4. 如果验证失败，修订 `field_values.json` 并重新验证
+
+5. 填充表单：`python scripts/fill_form.py input.pdf field_values.json output.pdf`
+````
+
+**关键成分**：步骤 3 的验证脚本，检查计划（`field_values.json`）与真实源（`form_fields.json`）。
+
+### 打包可复用脚本
+
+在技能迭代中，比较 Agent 的执行追踪。如果注意到 Agent 每次都独立重新发明相同的逻辑 —— 构建图表、解析特定格式、验证输出 —— 这是信号：编写一次测试脚本并打包到 `scripts/`。
+
+## 创建流程
+
+### 1. 确定技能范围
+
+明确技能要解决的具体问题：
+
+```
+✅ 好的技能：代码审查、API 生成、测试编写
+❌ 不好的技能：通用编程、做所有事情
+```
+
+### 2. 创建目录结构
 
 ```bash
 # 在 plugin 中创建 skill
 mkdir -p my-plugin/.claude-plugin
 mkdir -p my-plugin/skills/my-skill
-
-# 或创建独立的 skill 文件
-mkdir -p skills/my-skill
+mkdir -p my-plugin/skills/my-skill/references
+mkdir -p my-plugin/skills/my-skill/scripts
+mkdir -p my-plugin/skills/my-skill/assets
 ```
 
-### 步骤 3：编写 SKILL.md
+### 3. 编写 SKILL.md
 
 ```markdown
 ---
 name: code-reviewer
-description: Review code for bugs, security issues, and best practices
+description: 审查代码的 bug、安全问题和最佳实践
 ---
 
-# Code Review Skill
+# 代码审查技能
 
-Review code changes for:
-- Potential bugs and edge cases
-- Security vulnerabilities
-- Performance issues
-- Code style and consistency
-- Best practices violations
+## 审查要点
 
-## Review Process
+按优先级检查：
+1. **安全问题** - SQL 注入、XSS、认证漏洞
+2. **关键 bug** - 空指针、竞态条件、资源泄漏
+3. **性能问题** - N+1 查询、内存泄漏、阻塞调用
+4. **代码质量** - 可读性、可维护性、测试覆盖
 
-1. **Understand Context**: Analyze the code's purpose
-2. **Check Issues**: Look for problems in priority order
-3. **Provide Feedback**: Give actionable suggestions
-4. **Explain Why**: Help developers understand the reasoning
+## 输出格式
 
-## Output Format
+```markdown
+## 🔴 关键问题
+[必须修复的问题]
 
-Provide feedback in this format:
+## ⚠️ 建议
+[改进建议]
 
-### Critical Issues
-- [Issue description]
-
-### Suggestions
-- [Suggestion with reasoning]
-
-### Positive Notes
-- [What was done well]
+## ✅ 做得好的地方
+[正面反馈]
+```
 ```
 
-### 步骤 4：配置 Plugin（如果使用）
+### 4. 配置 Plugin
 
 创建 `.claude-plugin/plugin.json`：
 
@@ -113,318 +284,175 @@ Provide feedback in this format:
 }
 ```
 
-## Skill 最佳实践
+## 技能类型模式
 
-### 1. 明确的触发条件
+### 分析型
 
-在描述中说明何时应该使用此 Skill：
-
-```markdown
-## When to Use
-
-Trigger this skill when:
-- User asks to review code
-- User mentions "security audit"
-- User wants to check for bugs
-```
-
-### 2. 结构化的内容
-
-使用清晰的标题和章节：
-
-```markdown
-## Overview
-Brief explanation
-
-## Step-by-Step
-1. First step
-2. Second step
-
-## Examples
-Concrete examples
-```
-
-### 3. 具体的指令
-
-避免模糊的指示，给出明确的方向：
-
-❌ 不好的指令：
-```
-Make the code better.
-```
-
-✅ 好的指令：
-```
-Review the code for:
-1. Memory leaks
-2. Unhandled promises
-3. Missing error handling
-4. Type safety issues
-```
-
-### 4. 包含示例
-
-提供具体的使用示例：
-
-```markdown
-## Example
-
-Input:
-```typescript
-function getData(url: string) {
-  return fetch(url)
-}
-```
-
-Output:
-The function should:
-- Add error handling
-- Specify return type
-- Add timeout handling
-- Add request validation
-```
-
-## Skill 类型和模式
-
-### 1. 分析型 Skill
-
-用于审查、分析和评估：
+用于审查、分析、评估：
 
 ```markdown
 ---
 name: security-auditor
-description: Analyze code for security vulnerabilities
+description: 分析代码安全漏洞
 ---
 
-# Security Auditor
+# 安全审计器
 
-Analyze code for:
-- SQL injection risks
-- XSS vulnerabilities
-- Authentication issues
-- Authorization flaws
-- Crypto implementation errors
+分析以下内容：
+- SQL 注入风险（检查字符串拼接查询）
+- XSS 漏洞（检查未转义的输出）
+- 认证问题（检查缺少的权限检查）
+- 授权缺陷（检查不正确的角色验证）
+- 加密实现错误（检查不安全的加密算法）
 ```
 
-### 2. 生成型 Skill
+### 生成型
 
 用于创建代码、文档、测试：
 
 ```markdown
 ---
 name: test-generator
-description: Generate comprehensive unit tests
+description: 生成全面的单元测试
 ---
 
-# Test Generator
+# 测试生成器
 
-Generate tests that cover:
-- Happy path scenarios
-- Edge cases
-- Error conditions
-- Boundary values
+为以下场景生成测试：
+1. **正常路径** - 预期输入和成功场景
+2. **边缘情况** - 空值、边界值、极限值
+3. **错误条件** - 无效输入、网络错误、超时
+4. **集成场景** - 与其他组件的交互
 ```
 
-### 3. 转换型 Skill
+### 转换型
 
 用于重构、迁移、格式化：
 
 ```markdown
 ---
-name: js-to-ts-migrator
-description: Migrate JavaScript code to TypeScript
+name: elysia-migrator
+description: 将 Express 路由迁移到 Elysia
 ---
 
-# JS to TS Migrator
+# Elysia 迁移器
 
-Migrate code by:
-1. Adding type annotations
-2. Creating interfaces for objects
-3. Using generics for flexibility
-4. Handling any types properly
-```
+## 迁移步骤
 
-### 4. 交互型 Skill
+1. **提取请求处理逻辑**
+   - 将 `(req, res)` 参数改为 `({ body, params, query, headers })`
+   - 将 `res.json()` 改为 `return` 语句
 
-用于引导用户完成复杂任务：
+2. **添加 TypeBox 验证**
+   - 为 request body 创建 schema
+   - 为 response 创建 schema
 
-```markdown
----
-name: project-scaffolder
-description: Guide through project setup
----
+3. **错误处理**
+   - 将 `next(err)` 改为 `throw new Error()`
+   - 使用 Elysia 的错误处理插件
 
-# Project Scaffolder
-
-Guide the user through:
-1. Choosing project type
-2. Selecting dependencies
-3. Setting up structure
-4. Configuring tooling
-5. Writing initial code
-```
-
-## 高级功能
-
-### 禁用模型调用
-
-对于不需要调用其他工具的 Skill：
-
-```markdown
----
-disable-model-invocation: true
----
-```
-
-这在以下场景有用：
-- 纯分析任务
-- 生成标准输出
-- 提供静态建议
-
-### 引用其他 Skills
-
-创建 Skill 链：
-
-```markdown
-For complex projects, also use:
-- /database-design - for schema planning
-- /api-generator - for endpoint creation
-```
-
-### 动态内容
-
-使用条件逻辑：
-
-```markdown
-If the code is React:
-- Check for proper hooks usage
-- Verify component structure
-- Look for performance issues
-
-If the code is Node.js:
-- Check async handling
-- Verify error management
-- Look for memory leaks
-```
-
-## 完整示例：Elysia 开发 Skill
-
-```markdown
----
-name: elysia-developer
-description: Expert ElysiaJS framework assistant for building type-safe backends
----
-
-# ElysiaJS Developer
-
-Expert assistance for building backend applications with ElysiaJS framework.
-
-## Core Competencies
-
-- Type-safe route definitions
-- Schema validation with TypeBox
-- Plugin development
-- Error handling patterns
-- Testing strategies
-
-## Project Structure
-
-```
-src/
-├── modules/
-│   ├── feature-a/
-│   │   ├── feature-a.model.ts
-│   │   ├── feature-a.service.ts
-│   │   └── feature-a.ts
-│   └── feature-b/
-└── index.ts
-```
-
-## Common Patterns
-
-### Basic Route
+## 模板转换
 
 ```typescript
-import { Elysia, t } from 'elysia'
+// Express
+app.post('/users', (req, res) => {
+  res.json({ id: 1, name: req.body.name })
+})
 
-.get('/users', () => User.findMany())
-.post('/user', ({ body }) => User.create({
-  data: body
-}), {
-  body: t.Object({
-    name: t.String(),
-    email: t.String({ format: 'email' })
+// Elysia
+.post('/users', ({ body }) => ({ id: 1, name: body.name }), {
+  body: t.Object({ name: t.String() }),
+  response: t.Object({
+    id: t.Number(),
+    name: t.String()
   })
 })
 ```
-
-### Error Handling
-
-```typescript
-import { status } from 'elysia'
-
-.get('/user/:id', async ({ params: { id } }) => {
-  const user = await User.findUnique({ where: { id } })
-  
-  if (!user) {
-    return status(404, 'User not found')
-  }
-  
-  return user
-})
 ```
 
-## Best Practices
+### 交互型
 
-1. Always define response schemas
-2. Use guards for shared validation
-3. Implement proper error handling
-4. Write tests for all routes
-5. Use命名空间 for model organization
+用于引导完成复杂任务：
 
-## When to Use
+```markdown
+---
+name: elysia-module-scaffolder
+description: 引导创建 Elysia 模块
+---
 
-Trigger this skill when:
-- Creating ElysiaJS routes
-- Setting up validation
-- Implementing authentication
-- Adding plugins
-- Writing Elysia tests
+# Elysia 模块脚手架
+
+引导用户完成以下步骤：
+
+## 步骤 1：确定模块范围
+
+提问：
+- 模块名称是什么？
+- 需要哪些数据库表？
+- 需要哪些 API 端点？
+
+## 步骤 2：生成文件结构
+
+```
+src/modules/<module-name>/
+├── <module-name>.schema.ts    # Drizzle 表定义
+├── <module-name>.model.ts     # TypeScript 类型
+├── <module-name>.service.ts   # 业务逻辑
+└── <module-name>.ts           # 路由控制器
 ```
 
-## 测试你的 Skill
+## 步骤 3：生成代码
+
+根据步骤 1 的答案，生成每个文件的内容。
+
+## 步骤 4：验证
+
+运行以下命令验证：
+- `bun run typecheck` - 检查类型
+- `bun run lint` - 检查代码风格
+```
+
+## 测试和迭代
 
 ### 本地测试
 
-1. 将 Skill 放入 plugin 目录
-2. 安装 plugin：`/plugin install my-plugin`
-3. 触发 skill：`/my-skill` 或通过对话触发
+```bash
+# 1. 安装 plugin
+/plugin install my-plugin
+
+# 2. 触发 skill
+/skill-name "执行实际任务"
+
+# 3. 检查执行追踪
+# 寻找：
+# - 浪费时间的步骤
+# - 不适用的指令
+# - 缺失的关键信息
+
+# 4. 修订并重试
+```
 
 ### 验证清单
 
-- [ ] 描述清晰说明 Skill 用途
-- [ ] 触发条件明确
+- [ ] 描述清晰说明技能用途和触发场景
+- [ ] 包含具体的输入/输出示例
+- [ ] 指令具体（避免"适当处理"之类的模糊语言）
+- [ ] 处理边缘情况和错误条件
 - [ ] 输出格式一致
-- [ ] 包含具体示例
-- [ ] 处理边缘情况
-- [ ] 提供可操作的建议
+- [ ] 代码示例可运行
+- [ ] 文件路径准确
+- [ ] 依赖明确列出
 
-## 调试技巧
+### 调试技巧
 
-### Skill 未触发
+| 问题 | 可能原因 | 解决方案 |
+|:-----|:---------|:---------|
+| Skill 未触发 | description 不清晰 | 添加具体触发场景关键词 |
+| 输出不符合预期 | 指令太模糊 | 添加具体示例和约束 |
+| Agent 忽略指令 | 指令不适用 | 添加条件判断 |
+| 上下文溢出 | 内容太长 | 移动详细内容到 references/ |
 
-1. 检查 description 是否清晰
-2. 确认 skill 已安装
-3. 尝试更明确的触发词
-
-### 输出不理想
-
-1. 添加更具体的指令
-2. 包含更多示例
-3. 明确输出格式
-4. 添加约束条件
-
-## 发布你的 Skill
+## 发布
 
 ### 作为 Plugin 的一部分
 
@@ -439,13 +467,12 @@ Trigger this skill when:
 ### 独立分发
 
 1. 创建 GitHub 仓库
-2. 包含清晰的 README
-3. 添加使用示例
+2. 包含清晰的 README（使用案例、示例）
+3. 添加测试用例
 4. 发布到 marketplace
-```
 
 ## 资源
 
 - [Claude Code Plugins 文档](https://code.claude.com/docs/plugins)
-- [Plugin Marketplace](https://code.claude.com/docs/discover-plugins)
-- [最佳实践指南](https://code.claude.com/docs/best-practices)
+- [Skill 评估指南](https://agentskills.io/skill-creation/evaluating-skills)
+- [优化 Skill 描述](https://agentskills.io/skill-creation/optimizing-descriptions)
