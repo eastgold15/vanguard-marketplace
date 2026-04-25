@@ -1,6 +1,7 @@
 # shadcn MCP Server
 
 The CLI includes an MCP server that lets AI assistants search, browse, view, and install components from registries.
+
 ---
 
 ## Setup

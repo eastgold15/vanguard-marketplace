@@ -39,5 +39,5 @@
     <PostSyncCommand Condition="Completion"/>
     <LogFolder/>
     <EmailNotification Condition="Always"/>
-    <GridViewType>Action</GridViewType>
+    <GridViewType>Difference</GridViewType>
 </FreeFileSync>
