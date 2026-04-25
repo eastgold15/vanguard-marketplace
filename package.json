@@ -1,0 +1,20 @@
+{
+  "name": "vanguard-marketplace",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun run src/sync_skills.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^6"
+  },
+  "dependencies": {
+    "consola": "^3.4.2",
+    "giget": "^3.2.0",
+    "neverthrow": "^8.2.0"
+  }
+}

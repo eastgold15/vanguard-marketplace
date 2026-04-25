@@ -1,0 +1,60 @@
+{
+  "settings": {
+    "base_path": "./skills_hub",
+    "soft_link": {
+      "exclude": [],
+      "include": [
+        "C:/Users/boer/.agents/skills/*"
+      ],
+      "target": "./skills"
+    }
+  },
+  "sources": [
+    {
+      "branch": "main",
+      "name": "Better Auth 社区技能",
+      "repo_url": "github:better-auth/skills",
+      "resource": "better-auth",
+      "target": "./skills/better-auth"
+    },
+    {
+      "branch": "main",
+      "name": "elysia 社区技能",
+      "repo_url": "github:elysia/skills",
+      "resource": "elysia",
+      "target": "./skills/elysia"
+    },
+    {
+      "branch": "main",
+      "name": "elysia 社区技能",
+      "repo_url": "github:elysia/skills",
+      "resource": "elysia",
+      "target": "./skills/elysia"
+    },
+    {
+      "name": "code-generation",
+      "target": "./skills/code-generation",
+      "type": "self"
+    },
+    {
+      "name": "create-marketplace",
+      "target": "./skills/create-marketplace",
+      "type": "self"
+    },
+    {
+      "name": "create-skill",
+      "target": "./skills/create-skill",
+      "type": "self"
+    },
+    {
+      "name": "obsidian",
+      "target": "./skills/obsidian",
+      "type": "self"
+    },
+    {
+      "name": "react-component",
+      "target": "./skills/react-component",
+      "type": "self"
+    }
+  ]
+}
