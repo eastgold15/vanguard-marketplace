@@ -1,12 +1,12 @@
 ---
-name: orm
+name: drizzle-stack
 description: >-
   为 Drizzle ORM 后端项目生成并强制执行标准文件结构、表 schema 定义、关系映射、TypeBox 类型契约和查询模式。
   当用户提及 drizzle、drizzle-orm、数据库表设计、TypeBox schema 生成、Drizzle 项目结构或 Drizzle 查询时触发。
   配合 Better Auth 使用。
 ---
 
-# ORM 规范
+# Drizzle Stack 规范
 
 后端使用 **Drizzle ORM 1.0 + Better Auth** 的标准代码规范。
 
