@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "fa7479c3-50f2-4f81-a072-8fd8291170e8",
+  "path": "better-auth/twoFactor",
+  "path_key": "better-auth/twofactor",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "f231e217-5601-4920-974c-767ea38f6af8",
+  "path": "create-project",
+  "path_key": "create-project",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

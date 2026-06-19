@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "81426826-b966-490c-8521-7b75f624b614",
+  "path": "code-generation",
+  "path_key": "code-generation",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

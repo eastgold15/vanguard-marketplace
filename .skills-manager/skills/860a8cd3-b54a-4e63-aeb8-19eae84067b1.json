@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "860a8cd3-b54a-4e63-aeb8-19eae84067b1",
+  "path": "better-auth/create-auth",
+  "path_key": "better-auth/create-auth",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

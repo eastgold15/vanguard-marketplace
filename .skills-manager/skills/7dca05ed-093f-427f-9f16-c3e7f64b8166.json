@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "7dca05ed-093f-427f-9f16-c3e7f64b8166",
+  "path": "rust-rule",
+  "path_key": "rust-rule",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

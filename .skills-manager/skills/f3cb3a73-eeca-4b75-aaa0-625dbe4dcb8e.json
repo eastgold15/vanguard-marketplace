@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "f3cb3a73-eeca-4b75-aaa0-625dbe4dcb8e",
+  "path": "better-auth/organization",
+  "path_key": "better-auth/organization",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

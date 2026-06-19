@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "a955c3e8-9ef3-4c78-8e68-aeb6a85cc696",
+  "path": "create-marketplace",
+  "path_key": "create-marketplace",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "9a3e3044-419c-4e4f-994a-2b2f20113feb",
+  "path": "drizzle-stack",
+  "path_key": "drizzle-stack",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

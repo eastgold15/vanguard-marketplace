@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "8030ece5-3b2f-4e68-8335-ee63fb0bf011",
+  "path": "neverthrow",
+  "path_key": "neverthrow",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

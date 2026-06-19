@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "b7c24bff-c99b-485d-8274-60217a35276c",
+  "path": "db-to-typebox",
+  "path_key": "db-to-typebox",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

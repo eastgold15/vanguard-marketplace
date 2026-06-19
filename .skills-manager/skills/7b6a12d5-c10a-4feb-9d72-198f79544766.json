@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "7b6a12d5-c10a-4feb-9d72-198f79544766",
+  "path": "dev-rule",
+  "path_key": "dev-rule",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}
