@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "cb26eefc-e689-406f-a952-a3172af5be4c",
+  "path": "drizzle-orm-overview-and-setup",
+  "path_key": "drizzle-orm-overview-and-setup",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "git",
+    "ref": "https://github.com/andrewsrigom/agent-skills/tree/main/drizzle-orm",
+    "subpath": "drizzle-orm\\drizzle-orm-overview-and-setup",
+    "branch": "main"
+  }
+}

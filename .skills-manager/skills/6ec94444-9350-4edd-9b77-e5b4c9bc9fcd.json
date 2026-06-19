@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "6ec94444-9350-4edd-9b77-e5b4c9bc9fcd",
+  "path": "drizzle-orm-queries-and-sql",
+  "path_key": "drizzle-orm-queries-and-sql",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "git",
+    "ref": "https://github.com/andrewsrigom/agent-skills/tree/main/drizzle-orm",
+    "subpath": "drizzle-orm\\drizzle-orm-queries-and-sql",
+    "branch": "main"
+  }
+}

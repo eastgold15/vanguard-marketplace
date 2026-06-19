@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "a229fb7e-42db-48e6-838b-95d2bbc2982d",
+  "path": "drizzle-orm-ecosystem-and-extensions",
+  "path_key": "drizzle-orm-ecosystem-and-extensions",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "git",
+    "ref": "https://github.com/andrewsrigom/agent-skills/tree/main/drizzle-orm",
+    "subpath": "drizzle-orm\\drizzle-orm-ecosystem-and-extensions",
+    "branch": "main"
+  }
+}

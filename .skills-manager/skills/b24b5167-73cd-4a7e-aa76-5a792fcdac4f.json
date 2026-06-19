@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "b24b5167-73cd-4a7e-aa76-5a792fcdac4f",
+  "path": "drizzle-orm-schema-and-relations",
+  "path_key": "drizzle-orm-schema-and-relations",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "git",
+    "ref": "https://github.com/andrewsrigom/agent-skills/tree/main/drizzle-orm",
+    "subpath": "drizzle-orm\\drizzle-orm-schema-and-relations",
+    "branch": "main"
+  }
+}

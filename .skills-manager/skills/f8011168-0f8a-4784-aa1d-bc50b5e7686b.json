@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "f8011168-0f8a-4784-aa1d-bc50b5e7686b",
+  "path": "drizzle-orm-drivers-and-runtimes",
+  "path_key": "drizzle-orm-drivers-and-runtimes",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "git",
+    "ref": "https://github.com/andrewsrigom/agent-skills/tree/main/drizzle-orm",
+    "subpath": "drizzle-orm\\drizzle-orm-drivers-and-runtimes",
+    "branch": "main"
+  }
+}
