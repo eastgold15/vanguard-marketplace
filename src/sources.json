@@ -55,6 +55,91 @@
       "name": "react-component",
       "target": "./skills/react-component",
       "type": "self"
+    },
+    {
+      "name": "better-auth-best-practices",
+      "target": "./skills/better-auth-best-practices",
+      "type": "self"
+    },
+    {
+      "name": "bun",
+      "target": "./skills/bun",
+      "type": "self"
+    },
+    {
+      "name": "create-auth-skill",
+      "target": "./skills/create-auth-skill",
+      "type": "self"
+    },
+    {
+      "name": "create-project",
+      "target": "./skills/create-project",
+      "type": "self"
+    },
+    {
+      "name": "db-to-typebox",
+      "target": "./skills/db-to-typebox",
+      "type": "self"
+    },
+    {
+      "name": "dev-rule",
+      "target": "./skills/dev-rule",
+      "type": "self"
+    },
+    {
+      "name": "drizzle-stack",
+      "target": "./skills/drizzle-stack",
+      "type": "self"
+    },
+    {
+      "name": "elysiajs",
+      "target": "./skills/elysiajs",
+      "type": "self"
+    },
+    {
+      "name": "find-skills",
+      "target": "./skills/find-skills",
+      "type": "self"
+    },
+    {
+      "name": "neverthrow",
+      "target": "./skills/neverthrow",
+      "type": "self"
+    },
+    {
+      "name": "obsidian-bases",
+      "target": "./skills/obsidian-bases",
+      "type": "self"
+    },
+    {
+      "name": "obsidian-cli",
+      "target": "./skills/obsidian-cli",
+      "type": "self"
+    },
+    {
+      "name": "obsidian-markdown",
+      "target": "./skills/obsidian-markdown",
+      "type": "self"
+    },
+    {
+      "name": "opentui",
+      "target": "./skills/opentui",
+      "type": "self"
+    },
+    {
+      "name": "rust-rule",
+      "target": "./skills/rust-rule",
+      "type": "self"
+    },
+    {
+      "name": "shadcn",
+      "target": "./skills/shadcn",
+      "type": "self"
+    },
+    {
+      "name": "tailwind-design-system",
+      "target": "./skills/tailwind-design-system",
+      "type": "self"
     }
   ]
 }
