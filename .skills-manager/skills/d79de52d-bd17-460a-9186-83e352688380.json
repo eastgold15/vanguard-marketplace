@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "d79de52d-bd17-460a-9186-83e352688380",
+  "path": "threejs-fundamentals",
+  "path_key": "threejs-fundamentals",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "skillssh",
+    "ref": "cloudai-x/threejs-skills/threejs-fundamentals",
+    "subpath": "skills\\threejs-fundamentals",
+    "branch": null
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "005bdffd-4e12-4ecb-a655-57f46f547b53",
+  "path": "threejs-materials",
+  "path_key": "threejs-materials",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "skillssh",
+    "ref": "cloudai-x/threejs-skills/threejs-materials",
+    "subpath": "skills\\threejs-materials",
+    "branch": null
+  }
+}
