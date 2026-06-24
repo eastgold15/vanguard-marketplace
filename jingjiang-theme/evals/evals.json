@@ -3,21 +3,182 @@
   "evals": [
     {
       "id": 1,
+      "name": "complete-slide-deck-generation",
       "prompt": "我要做一个述职汇报的 Slidev 演示文稿，用锦江这个紫色主题。帮我写一个完整的 slides.md，内容是关于体育学院2024年工作总结，包含封面、工作概述（用卡片展示三个关键数据指标）、专业建设数据（表格）、重点项目（用 Mermaid 流程图展示），以及结束页。",
       "expected_output": "生成一份完整可用的 slides.md 文件，使用 jingjiang-theme，包含 cover、circle-tl-br、circle-tr-bl 布局，使用 Card、MermaidView 组件，数据使用 text-data/text-total 高亮类",
-      "files": []
+      "files": [],
+      "assertions": [
+        {
+          "name": "uses-cover-layout",
+          "description": "输出包含 layout: cover 用于首页",
+          "check": "file_contains",
+          "value": "layout: cover"
+        },
+        {
+          "name": "uses-circle-layout",
+          "description": "输出包含 circle-tl-br 或 circle-tr-bl 布局用于正文",
+          "check": "file_contains_regex",
+          "value": "layout: circlet[lr]-b[rl]|layout: circle-t[lr]-b[rl]"
+        },
+        {
+          "name": "uses-card-component",
+          "description": "输出使用了 Card 组件标签",
+          "check": "file_contains",
+          "value": "<Card"
+        },
+        {
+          "name": "uses-mermaid-view",
+          "description": "输出使用了 MermaidView 组件",
+          "check": "file_contains",
+          "value": "<MermaidView"
+        },
+        {
+          "name": "uses-text-data-class",
+          "description": "数据高亮使用了 text-data 类",
+          "check": "file_contains",
+          "value": "text-data"
+        },
+        {
+          "name": "has-cover-divider",
+          "description": "封面页包含 cover-divider 分割线",
+          "check": "file_contains",
+          "value": "cover-divider"
+        },
+        {
+          "name": "has-cover-footer",
+          "description": "封面页包含 cover-footer 页脚",
+          "check": "file_contains",
+          "value": "cover-footer"
+        },
+        {
+          "name": "has-ending-slide",
+          "description": "有结束页/感谢页",
+          "check": "file_contains_regex",
+          "value": "感谢|谢谢|结束|Thank"
+        },
+        {
+          "name": "has-multiple-slides",
+          "description": "至少包含 5 页幻灯片（用 --- 分隔）",
+          "check": "file_line_count_regex",
+          "value": "^---$",
+          "min_count": 4
+        },
+        {
+          "name": "correct-theme-name",
+          "description": "引用了正确的主题包名",
+          "check": "file_contains",
+          "value": "@eastgold15/slidev-theme-jingjiang"
+        }
+      ]
     },
     {
       "id": 2,
+      "name": "card-dual-column-layout",
       "prompt": "我想在幻灯片里并排放两个磨砂卡片，左边放'课程设置'右边放'师资队伍'，都用金色装饰条，然后底部再放一个通栏大卡片展示合计数据。用锦江主题帮我写好这段 Slidev 代码。",
       "expected_output": "生成使用 Card 组件的双层布局代码：上方双栏 grid 布局两个 Card，底部通栏 Card，均使用正确主题色，包含实际内容",
-      "files": []
+      "files": [],
+      "assertions": [
+        {
+          "name": "uses-grid-cols-2",
+          "description": "使用 grid-cols-2 实现双栏并列",
+          "check": "file_contains",
+          "value": "grid-cols-2"
+        },
+        {
+          "name": "uses-card-with-accent",
+          "description": "Card 使用了 accent 属性设置装饰条颜色",
+          "check": "file_contains",
+          "value": "accent"
+        },
+        {
+          "name": "has-bottom-full-card",
+          "description": "底部有通栏 size=full 的大卡片",
+          "check": "file_contains",
+          "value": "full"
+        },
+        {
+          "name": "multiple-card-tags",
+          "description": "包含至少 3 个 Card 标签（2 个双栏 + 1 个通栏）",
+          "check": "file_count_min",
+          "value": "<Card",
+          "min_count": 3
+        },
+        {
+          "name": "has-course-content",
+          "description": "课程设置卡片包含实际内容",
+          "check": "file_contains",
+          "value": "课程"
+        },
+        {
+          "name": "has-teacher-content",
+          "description": "师资队伍卡片包含实际内容",
+          "check": "file_contains",
+          "value": "师资"
+        },
+        {
+          "name": "uses-gold-accent",
+          "description": "装饰条使用金色 (#F9D240 或其近似)",
+          "check": "file_contains_regex",
+          "value": "F9D240|f9d240|gold|金黄|金色"
+        }
+      ]
     },
     {
       "id": 3,
+      "name": "theme-query-knowledge",
       "prompt": "锦江主题有哪些布局和组件？每个布局适合什么场景？我想知道怎么在封面里加单位和日期，还有怎么放大看 mermaid 图表。",
       "expected_output": "能详细回答关于该主题的所有布局（cover/intro/circle-tl-br/circle-tr-bl）和组件（Card/MermaidView/ScrollView）的用途、参数和使用方式，特别解释封面页结构和 MermaidView 缩放功能",
-      "files": []
+      "files": [],
+      "assertions": [
+        {
+          "name": "mentions-all-layouts",
+          "description": "提到 cover 布局",
+          "check": "file_contains",
+          "value": "cover"
+        },
+        {
+          "name": "mentions-circle-layouts",
+          "description": "提到 circle-tl-br 或 circle-tr-bl",
+          "check": "file_contains_regex",
+          "value": "circle-t[lr]-b[rl]"
+        },
+        {
+          "name": "mentions-card-component",
+          "description": "提到 Card 组件",
+          "check": "file_contains",
+          "value": "Card"
+        },
+        {
+          "name": "mentions-mermaid-view",
+          "description": "提到 MermaidView 组件",
+          "check": "file_contains",
+          "value": "MermaidView"
+        },
+        {
+          "name": "mentions-scroll-view",
+          "description": "提到 ScrollView 组件",
+          "check": "file_contains",
+          "value": "ScrollView"
+        },
+        {
+          "name": "explains-cover-footer",
+          "description": "解释了封面页如何添加单位和日期",
+          "check": "file_contains",
+          "value": "cover-footer"
+        },
+        {
+          "name": "explains-mermaid-zoom",
+          "description": "提及 MermaidView 的缩放/放大功能",
+          "check": "file_contains_regex",
+          "value": "缩放|放大|zoom|滚轮|重置|⟲"
+        },
+        {
+          "name": "mentions-color-system",
+          "description": "提到主题配色或色彩系统",
+          "check": "file_contains",
+          "value": "配色"
+        }
+      ]
     }
   ]
 }

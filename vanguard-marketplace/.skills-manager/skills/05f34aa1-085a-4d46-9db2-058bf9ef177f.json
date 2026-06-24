@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "05f34aa1-085a-4d46-9db2-058bf9ef177f",
+  "path": "elysiajs",
+  "path_key": "elysiajs",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

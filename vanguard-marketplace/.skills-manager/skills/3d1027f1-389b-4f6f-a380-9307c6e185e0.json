@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "3d1027f1-389b-4f6f-a380-9307c6e185e0",
+  "path": "formself",
+  "path_key": "formself",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

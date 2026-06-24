@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "9c867202-9238-4e35-b4c0-a4620d8b9509",
+  "path": "threejs-shaders",
+  "path_key": "threejs-shaders",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "skillssh",
+    "ref": "cloudai-x/threejs-skills/threejs-shaders",
+    "subpath": "skills\\threejs-shaders",
+    "branch": null
+  }
+}

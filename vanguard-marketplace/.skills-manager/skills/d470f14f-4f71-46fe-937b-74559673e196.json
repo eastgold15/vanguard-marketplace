@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "d470f14f-4f71-46fe-937b-74559673e196",
+  "path": "better-auth/emailAndPassword",
+  "path_key": "better-auth/emailandpassword",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "aa6abc3d-3008-4573-9fe3-455c1715cb79",
+  "path": "threejs-postprocessing",
+  "path_key": "threejs-postprocessing",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "skillssh",
+    "ref": "cloudai-x/threejs-skills/threejs-postprocessing",
+    "subpath": "skills\\threejs-postprocessing",
+    "branch": null
+  }
+}

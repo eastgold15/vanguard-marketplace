@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "3a70723e-9343-41bb-a02a-e500257fe1a6",
+  "path": "jingjiang-theme",
+  "path_key": "jingjiang-theme",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "git",
+    "ref": "https://github.com/eastgold15/jingjiang",
+    "subpath": "jingjiang-theme",
+    "branch": null
+  }
+}

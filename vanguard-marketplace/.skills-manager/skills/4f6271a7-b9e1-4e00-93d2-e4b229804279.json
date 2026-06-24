@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "4f6271a7-b9e1-4e00-93d2-e4b229804279",
+  "path": "threejs-interaction",
+  "path_key": "threejs-interaction",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "skillssh",
+    "ref": "cloudai-x/threejs-skills/threejs-interaction",
+    "subpath": "skills\\threejs-interaction",
+    "branch": null
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "b45b7035-25c0-4ff6-be4d-45ca5e6a785c",
+  "path": "drizzle-orm-migrations-and-drizzle-kit",
+  "path_key": "drizzle-orm-migrations-and-drizzle-kit",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "git",
+    "ref": "https://github.com/andrewsrigom/agent-skills/tree/main/drizzle-orm",
+    "subpath": "drizzle-orm\\drizzle-orm-migrations-and-drizzle-kit",
+    "branch": "main"
+  }
+}

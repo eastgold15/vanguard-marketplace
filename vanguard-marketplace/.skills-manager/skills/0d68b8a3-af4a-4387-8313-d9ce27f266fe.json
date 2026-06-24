@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "0d68b8a3-af4a-4387-8313-d9ce27f266fe",
+  "path": "threejs-loaders",
+  "path_key": "threejs-loaders",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "skillssh",
+    "ref": "cloudai-x/threejs-skills/threejs-loaders",
+    "subpath": "skills\\threejs-loaders",
+    "branch": null
+  }
+}

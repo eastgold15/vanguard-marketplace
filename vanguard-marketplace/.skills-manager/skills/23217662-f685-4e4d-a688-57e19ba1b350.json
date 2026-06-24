@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "23217662-f685-4e4d-a688-57e19ba1b350",
+  "path": "threejs-textures",
+  "path_key": "threejs-textures",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "skillssh",
+    "ref": "cloudai-x/threejs-skills/threejs-textures",
+    "subpath": "skills\\threejs-textures",
+    "branch": null
+  }
+}

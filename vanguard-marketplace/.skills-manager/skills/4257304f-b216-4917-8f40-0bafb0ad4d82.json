@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "4257304f-b216-4917-8f40-0bafb0ad4d82",
+  "path": "create-auth-skill",
+  "path_key": "create-auth-skill",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

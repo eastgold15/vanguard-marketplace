@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "fc12edbc-ebca-4326-876b-35ac1f916da6",
+  "path": "slidev-2",
+  "path_key": "slidev-2",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "skillssh",
+    "ref": "slidevjs/slidev/slidev",
+    "subpath": "skills\\slidev",
+    "branch": null
+  }
+}

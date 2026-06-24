@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "e349318e-311e-436b-b5df-83301e7ef0b0",
+  "path": "react-component/component",
+  "path_key": "react-component/component",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

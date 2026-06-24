@@ -42,8 +42,8 @@ theme: "@eastgold15/slidev-theme-jingjiang"
 |--------|---------------|------|
 | 封面页 | `cover` | 演示文稿首页。居中对称大标题 + 副标题 + 分割线 + 页脚，极简政务风 |
 | 简介页 | `intro` | 同封面风格，适合章节过渡页 |
-| 左上右下圆 | `circle-tl-br` | 双透明圆装饰背景，适合正文内容页 |
-| 右上左下圆 | `circle-tr-bl` | 双透明圆装饰背景（对称变体），适合正文内容页 |
+| 左上右下圆 | `circletl-br` | 双透明圆装饰背景，适合正文内容页 |
+| 右上左下圆 | `circletr-bl` | 双透明圆装饰背景（对称变体），适合正文内容页 |
 
 ### cover / intro 布局结构
 
@@ -70,11 +70,11 @@ layout: cover
 
 ### 内容页布局
 
-正文页面默认使用基础布局。推荐配合 `circle-tl-br` 或 `circle-tr-bl` 获得装饰性圆背景：
+正文页面默认使用基础布局。推荐配合 `circletl-br` 或 `circle-tr-bl` 获得装饰性圆背景：
 
 ```yaml
 ---
-layout: circle-tl-br
+layout: circletl-br
 ---
 ```
 
@@ -200,7 +200,7 @@ graph TB
 
 ```yaml
 ---
-layout: circle-tl-br
+layout: circletl-br
 class: "theme-light"
 ---
 ```
@@ -316,7 +316,7 @@ layout: cover
 
 ---
 
-layout: circle-tl-br
+layout: circletl-br
 ---
 
 # 专业建设数据
@@ -374,7 +374,7 @@ layout: cover
 ## 七、生成内容时的行为准则
 
 1. **先理解场景** — 判断用户是要做专业申报、述职汇报还是学术答辩，据此推荐不同的结构
-2. **善用布局组合** — cover 做首尾页，正文交替使用 circle-tl-br / circle-tr-bl，intro 做章节过渡
+2. **善用布局组合** — cover 做首尾页，正文交替使用 circletl-br / circle-tr-bl，intro 做章节过渡
 3. **数据可视化优先** — 有数据的页面优先用 Card 承载表格，关键数字用 `text-data` 高亮
 4. **保持风格一致** — 全文深紫底 + 磨砂卡片 + 浅紫分割线，不要引入其他颜色
 5. **长内容用 ScrollView** — 超过一屏的文字内容放入 ScrollView

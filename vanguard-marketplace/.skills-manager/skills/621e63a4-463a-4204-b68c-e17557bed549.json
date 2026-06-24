@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "621e63a4-463a-4204-b68c-e17557bed549",
+  "path": "threejs-lighting",
+  "path_key": "threejs-lighting",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "skillssh",
+    "ref": "cloudai-x/threejs-skills/threejs-lighting",
+    "subpath": "skills\\threejs-lighting",
+    "branch": null
+  }
+}

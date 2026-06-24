@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "9cad233c-4ece-4b8d-8fc3-69a1a6eb76b4",
+  "path": "ast-grep",
+  "path_key": "ast-grep",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

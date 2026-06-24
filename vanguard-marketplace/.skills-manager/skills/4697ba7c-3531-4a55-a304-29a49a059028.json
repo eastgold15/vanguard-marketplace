@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "4697ba7c-3531-4a55-a304-29a49a059028",
+  "path": "better-auth-best-practices",
+  "path_key": "better-auth-best-practices",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}
