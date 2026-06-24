@@ -1,0 +1,23 @@
+{
+  "skill_name": "jingjiang-theme",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我要做一个述职汇报的 Slidev 演示文稿，用锦江这个紫色主题。帮我写一个完整的 slides.md，内容是关于体育学院2024年工作总结，包含封面、工作概述（用卡片展示三个关键数据指标）、专业建设数据（表格）、重点项目（用 Mermaid 流程图展示），以及结束页。",
+      "expected_output": "生成一份完整可用的 slides.md 文件，使用 jingjiang-theme，包含 cover、circle-tl-br、circle-tr-bl 布局，使用 Card、MermaidView 组件，数据使用 text-data/text-total 高亮类",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "我想在幻灯片里并排放两个磨砂卡片，左边放'课程设置'右边放'师资队伍'，都用金色装饰条，然后底部再放一个通栏大卡片展示合计数据。用锦江主题帮我写好这段 Slidev 代码。",
+      "expected_output": "生成使用 Card 组件的双层布局代码：上方双栏 grid 布局两个 Card，底部通栏 Card，均使用正确主题色，包含实际内容",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "锦江主题有哪些布局和组件？每个布局适合什么场景？我想知道怎么在封面里加单位和日期，还有怎么放大看 mermaid 图表。",
+      "expected_output": "能详细回答关于该主题的所有布局（cover/intro/circle-tl-br/circle-tr-bl）和组件（Card/MermaidView/ScrollView）的用途、参数和使用方式，特别解释封面页结构和 MermaidView 缩放功能",
+      "files": []
+    }
+  ]
+}
