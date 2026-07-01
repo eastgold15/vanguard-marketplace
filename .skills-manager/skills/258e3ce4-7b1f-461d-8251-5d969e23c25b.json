@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "258e3ce4-7b1f-461d-8251-5d969e23c25b",
+  "path": "npm-publish",
+  "path_key": "npm-publish",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}
